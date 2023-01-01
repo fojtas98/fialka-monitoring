@@ -3,7 +3,7 @@ services:
   app:
     build: .
     environment:
-      - HOST: db
+      - HOST=db
   grafana:
     image: "grafana/grafana"
     ports:
