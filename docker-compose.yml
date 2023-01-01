@@ -2,8 +2,8 @@ version: '3.2'
 services:
   app:
     build: .
-    # environment:
-    #   - HOST=host.docker.internal
+    environment:
+      - HOST: db
   grafana:
     image: "grafana/grafana"
     ports:

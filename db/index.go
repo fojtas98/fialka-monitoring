@@ -4,6 +4,7 @@ import (
 	"context"
 	"database/sql"
 	"fmt"
+	"os"
 	"time"
 
 	"github.com/uptrace/bun"
@@ -21,10 +22,10 @@ type Availibility struct {
 }
 
 func ConnectToDB(ctx context.Context) *bun.DB {
-	// host, ok := os.LookupEnv("HOST")
-	// if !ok {
-	host := "localhost"
-	// }
+	host, ok := os.LookupEnv("HOST")
+	if !ok {
+		host = "localhost"
+	}
 	dsn := fmt.Sprintf("postgres://admin:password@%s:5432/fialka?sslmode=disable", host)
 
 	fmt.Println(dsn)
