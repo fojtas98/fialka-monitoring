@@ -29,7 +29,7 @@ func main() {
 		fmt.Printf("looping for %d time\n", i)
 		ava := &db.Availibility{NumberOfPeople: numberOfPeople, Time: time.Now()}
 		bunDb.NewInsert().Model(ava).Exec(ctx)
-		time.Sleep(time.Second * 10)
+		time.Sleep(time.Minute * 1)
 		i++
 	}
 }
