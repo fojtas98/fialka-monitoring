@@ -6,6 +6,8 @@ services:
       - HOST=db
   grafana:
     image: "grafana/grafana"
+    extra_hosts:
+      - "host.docker.internal:host-gateway" 
     ports:
       - "3000:3000"
   db:
