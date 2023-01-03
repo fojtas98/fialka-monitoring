@@ -16,9 +16,9 @@ func main() {
 
 	bunDb := db.ConnectToDB(ctx)
 	i := 1
-	var c = colly.NewCollector()
+	numberOfPeople := 0
 	for {
-		numberOfPeople := 0
+		var c = colly.NewCollector()
 		c.OnXML("/html/body/header/div[1]/div[2]/div/div[3]/div/div/text()", func(x *colly.XMLElement) {
 			v := strings.TrimSpace(x.Text)
 			if v != "" {
@@ -29,7 +29,7 @@ func main() {
 		fmt.Printf("looping for %d time\n", i)
 		ava := &db.Availibility{NumberOfPeople: numberOfPeople, Time: time.Now()}
 		bunDb.NewInsert().Model(ava).Exec(ctx)
-		time.Sleep(time.Minute * 1)
+		time.Sleep(time.Second * 10)
 		i++
 	}
 }

@@ -24,7 +24,7 @@ type Availibility struct {
 func ConnectToDB(ctx context.Context) *bun.DB {
 	host, ok := os.LookupEnv("HOST")
 	if !ok {
-		host = "localhost"
+		host = "host.docker.internal"
 	}
 	dsn := fmt.Sprintf("postgres://admin:password@%s:5432/fialka?sslmode=disable", host)
 
